@@ -1,4 +1,4 @@
-package ru.gavrilov.basik.homework.lesson3;
+package ru.gavrilov.basiс.homework.lesson3;
 
 import java.util.Arrays;
 import java.util.Scanner;
