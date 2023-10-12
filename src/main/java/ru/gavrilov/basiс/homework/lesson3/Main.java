@@ -58,14 +58,13 @@ public class Main {
     public static int[] randomizer() {
         int[] array = new int[6];
         for (int i = 0; i < array.length; i++) {
-            array[i] = -10 + (int) (Math.random() * (20 - (-20)) + 1);
+            array[i] = -10 + (int) (Math.random() * 40 + 1);
         }
         return array;
     }
 
     public static boolean boolRandomizer() {
-        int diSignal = (int) Math.round(Math.random());
-        return diSignal > 0;
+        return Math.random() > 0.5;
     }
 
     public static void greetings() {
@@ -76,7 +75,7 @@ public class Main {
     }
 
     public static void checkSign(int a, int b, int c) {
-        int sum = (a + b + c);
+        int sum = a + b + c;
         System.out.println(a + " + " + b + " + " + c + " = " + sum);
         if (sum >= 0) {
             System.out.println("Сумма положительная");
