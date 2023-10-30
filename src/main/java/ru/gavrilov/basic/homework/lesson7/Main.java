@@ -36,7 +36,7 @@ public class Main {
                 {28, 16, 56},
         };
         System.out.println(sumOfPositiveElements(arr1));
-        printSquare(4);
+        printSquare(5);
         zeroDiag(arr1);
         printArray(arr1);
         System.out.println(findMax(arr2));
@@ -57,10 +57,9 @@ public class Main {
     }
 
     public static void printSquare(int size) {
-        char[][] array2d = new char[size][size];
-        for (int i = 0; i < array2d.length; i++) {
-            for (int j = 0; j < array2d[i].length; j++) {
-                System.out.print(array2d[i][j] = '*');
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                System.out.print(" * ");
             }
             System.out.println();
         }
@@ -91,7 +90,7 @@ public class Main {
     }
 
     public static int findMax(int[][] array) {
-        int max = 0;
+        int max = array[0][0];
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 if (array[i][j] > max) {
