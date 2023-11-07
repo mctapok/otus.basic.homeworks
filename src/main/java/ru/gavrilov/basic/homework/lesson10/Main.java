@@ -15,25 +15,25 @@ public class Main {
         };
 
         Box box = new Box(10, "черный");
-        box.closeBox();
-        box.boxInfo();
-        box.openBox();
-        box.boxInfo();
-        box.putInBox("гитара");
-        box.boxInfo();
-        box.closeBox();
-        box.boxInfo();
-        box.clearBox();
-        box.boxInfo();
-        box.openBox();
-        box.putInBox("телевизор");
-        box.clearBox();
-        box.putInBox("телевизор");
-        box.boxInfo();
-        box.closeBox();
-        box.boxInfo();
+        box.close();
+        box.info();
+        box.open();
+        box.info();
+        box.put("гитара");
+        box.info();
+        box.close();
+        box.info();
+        box.clear();
+        box.info();
+        box.open();
+        box.put("телевизор");
+        box.clear();
+        box.put("телевизор");
+        box.info();
+        box.close();
+        box.info();
         box.setColor("белый");
-        box.boxInfo();
+        box.info();
 
         for (int i = 0; i < userArr.length; i++) {
             if (year - userArr[i].getBirthYear() > 40) {
