@@ -6,7 +6,7 @@ public abstract class Animal {
     int stamina;
     float swimSpeed;
     int fullStamina;
-    int swimStamina;
+    int swimRatio;
 
     public float run(int distance) {
         if (distance > stamina) {
@@ -25,17 +25,19 @@ public abstract class Animal {
         stamina = fullStamina;
     }
 
-    public float swim(int distance){
-        if (distance > swimStamina) {
+    public float swim(int distance) {
+        if (distance > stamina) {
             System.out.println(name + " не смог проплыть " + distance + "м\n");
             stamina = 0;
             return -1;
         }
         float time = distance / swimSpeed;
-        stamina = swimStamina - distance;
+        stamina = stamina - (distance * swimRatio);
         System.out.println(name + " проплыл " + distance + "м" + " за " + String.format("%.1f", time) + "c\n");
         return time;
-    };
+    }
+
+    ;
 
     public void info() {
         System.out.println(name + "\nвыносливость: " + stamina + "\nскорость бега (м/с): " + runSpeed + "\nскорость плавания (м/с): " + swimSpeed + "\n");

@@ -8,7 +8,7 @@ public class Horse extends Animal {
         this.runSpeed = runSpeed;
 //        this.fullStamina = stamina;
         this.swimSpeed = swimSpeed;
-        this.swimStamina = stamina / 4;
+        this.swimRatio = 4;
     }
 
 //    @Override

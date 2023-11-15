@@ -7,7 +7,8 @@ public class Dog extends Animal {
         this.runSpeed = runSpeed;
 //        this.fullStamina = stamina;
         this.swimSpeed = swimSpeed;
-        this.swimStamina = stamina / 2;
+        this.swimRatio = 2;
+
     }
 
 //    @Override

@@ -11,7 +11,8 @@ public class Main {
         Cat cat = new Cat("Matroskin", 500, 3.6f);
 
         horse.info();
-        horse.run(400);
+        horse.run(900);
+        horse.info();
         horse.swim(20);
         horse.info();
         horse.run(130);
@@ -19,7 +20,9 @@ public class Main {
         horse.info();
         dog.info();
         dog.run(400);
+        dog.info();
         dog.swim(20);
+        dog.info();
         dog.run(50);
         dog.info();
         cat.info();
