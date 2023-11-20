@@ -15,6 +15,7 @@ public class Main {
         horse.info();
         horse.swim(20);
         horse.info();
+        horse.swim(20);
         horse.run(130);
 //        horse.rest();
         horse.info();

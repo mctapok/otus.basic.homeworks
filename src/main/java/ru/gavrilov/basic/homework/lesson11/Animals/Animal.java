@@ -26,7 +26,7 @@ public abstract class Animal {
     }
 
     public float swim(int distance) {
-        if (distance > stamina) {
+        if (distance * swimRatio > stamina) {
             System.out.println(name + " не смог проплыть " + distance + "м\n");
             stamina = 0;
             return -1;
