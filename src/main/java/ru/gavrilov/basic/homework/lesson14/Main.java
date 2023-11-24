@@ -6,21 +6,16 @@ public class Main {
                 {"1", "2", "1", "2"},
                 {"1", "2", "1", "2"},
                 {"1", "2", "1", "2"},
-                {"1", "4", "2", "2"},
+                {"1", "0", "2", "3"},
         };
-        getArray(array);
         sumArr(array);
-//        try {
-//            sumArr(array);
-//        } catch (AppArrayDataException e) {
-//            System.out.println("data error " + e.getMessage());
-//        }
     }
 
-    public static void getArray(String[][] array) {
+    public static boolean checkArraySize(String[][] array) {
         for (int i = 0; i < array.length; i++) {
             if (array.length != 4) {
-                throw new AppArraySizeException("bad array: column length != 4; column length = " + array.length);
+//                throw new AppArraySizeException("bad array: column length != 4; column length = " + array.length);
+                throw new AppArraySizeException();
             }
         }
 
@@ -28,24 +23,44 @@ public class Main {
             String[] strings = array[i];
             for (int j = 0; j < strings.length; j++) {
                 if (array[j].length != 4)
-                    throw new AppArraySizeException("bad array: line length != 4; " + "line " + (j + 1));
+                    throw new AppArraySizeException();
+//                    throw new AppArraySizeException("bad array: line length != 4; " + "line " + (j + 1));
             }
         }
         System.out.println("array accepted");
+        return true;
     }
 
-    public static int sumArr(String[][] arr) throws AppArrayDataException {
+    public static int sumArr(String[][] arr) {
         int sum = 0;
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[i].length; j++) {
-                try {
-                    sum += Integer.parseInt(arr[i][j]);
-                } catch (RuntimeException e) {
-                    throw new AppArrayDataException("line " + (i + 1) + " column " + (j + 1));
+        if (checkArraySize(arr)) {
+            for (int i = 0; i < arr.length; i++) {
+                for (int j = 0; j < arr[i].length; j++) {
+                    try {
+                        sum += Integer.parseInt(arr[i][j]);
+                    } catch (RuntimeException e) {
+                        throw new AppArrayDataException("line " + (i + 1) + " column " + (j + 1));
+                    }
                 }
             }
+            System.out.println("array sum = " + sum);
         }
-        System.out.println("array sum = " + sum);
         return sum;
     }
+
+    //    public static int sumArr(String[][] arr) throws AppArrayDataException {
+//        int sum = 0;
+//        for (int i = 0; i < arr.length; i++) {
+//            for (int j = 0; j < arr[i].length; j++) {
+//                try {
+//                    sum += Integer.parseInt(arr[i][j]);
+//                } catch (RuntimeException e) {
+//                    throw new AppArrayDataException("line " + (i + 1) + " column " + (j + 1));
+//                }
+//            }
+//        }
+//        System.out.println("array sum = " + sum);
+//        return sum;
+//    }
+
 }
