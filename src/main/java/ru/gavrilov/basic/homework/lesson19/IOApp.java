@@ -75,6 +75,8 @@ public class IOApp {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            }else {
+                System.out.println("program closing");
             }
         } while (!userInput.equalsIgnoreCase("exit"));
     }
