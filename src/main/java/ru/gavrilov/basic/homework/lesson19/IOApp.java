@@ -4,9 +4,10 @@ import java.io.*;
 import java.util.Scanner;
 
 public class IOApp {
+    static Scanner scanner = new Scanner(System.in);
     public static void fileList(File fileDirectory) {
         File[] fileList = fileDirectory.listFiles();
-        assert fileList != null;
+        if (fileList == null) throw new AssertionError();
         System.out.println("file list: ");
         for (int i = 0; i < fileList.length; i++) {
             File file = fileList[i];
@@ -15,16 +16,24 @@ public class IOApp {
     }
 
     public static void displayFileContent(File file) {
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
             }
-            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+//        try {
+//            BufferedReader reader = new BufferedReader(new FileReader(file));
+//            String line;
+//            while ((line = reader.readLine()) != null) {
+//                System.out.println(line);
+//            }
+//            reader.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public static String getUserInput(Scanner scanner, String message) {
@@ -38,10 +47,10 @@ public class IOApp {
 
     public static void main(String[] args) {
         File fileDirectory = new File("files");
-        if (!fileDirectory.exists()){
+        if (!fileDirectory.exists()) {
             fileDirectory.mkdir();
         }
-        Scanner scanner = new Scanner(System.in);
+//        Scanner scanner = new Scanner(System.in);
 
         String fileName;
         File selectedFile;
@@ -56,7 +65,7 @@ public class IOApp {
                 return;
             }
 
-            selectedFile = new File(fileDirectory + "//" + fileName);
+            selectedFile = new File(fileDirectory + File.separator + fileName);
             if (!selectedFile.exists() || selectedFile.isDirectory()) {
                 System.out.println("file not found or its a directory");
             }
@@ -68,14 +77,19 @@ public class IOApp {
             userInput = getUserInput(scanner, "add text or type exit");
 
             if (!userInput.equalsIgnoreCase("exit")) {
-                try {
-                    BufferedWriter writer = new BufferedWriter(new FileWriter(selectedFile, true));
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(selectedFile, true))) {
                     writer.write(userInput + "\n");
-                    writer.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }else {
+//                try {
+//                    BufferedWriter writer = new BufferedWriter(new FileWriter(selectedFile, true));
+//                    writer.write(userInput + "\n");
+//                    writer.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+            } else {
                 System.out.println("program closing");
             }
         } while (!userInput.equalsIgnoreCase("exit"));
