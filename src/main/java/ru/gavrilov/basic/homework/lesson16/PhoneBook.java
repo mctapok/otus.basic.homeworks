@@ -3,7 +3,7 @@ package ru.gavrilov.basic.homework.lesson16;
 import java.util.*;
 
 public class PhoneBook {
-    Map<String, Set<String>> book = new HashMap<>();
+    private Map<String, Set<String>> book = new HashMap<>();
 
     public void add(String name, String phone) {
         String lowercaseName = name.toLowerCase();
@@ -17,11 +17,11 @@ public class PhoneBook {
 
     public void find(String name){
         String lowercaseName = name.toLowerCase();
-        if (!book.containsKey(lowercaseName)){
-            System.out.println("not found");
-            return;
-        }
-        System.out.println(book.get(lowercaseName));
+//        if (!book.containsKey(lowercaseName)){
+//            System.out.println("not found");
+//            return;
+//        }
+         System.out.println(book.get(lowercaseName));
     }
 
     public boolean containsPhoneNumber(String phone){
