@@ -69,11 +69,11 @@ public class Main {
         return nameList;
     }
 
-    public static List<String> olderThen(List<Employee> employeeList, int minAge) {
-        List<String> ageList = new ArrayList<>();
+    public static List<Employee> olderThen(List<Employee> employeeList, int minAge) {
+        List<Employee> ageList = new ArrayList<>();
         for (Employee employee : employeeList) {
             if (employee.getAge() >= minAge) {
-                ageList.add(employee.getName());
+                ageList.add(employee);
             }
         }
         return ageList;
@@ -89,6 +89,7 @@ public class Main {
     }
 
     public static Employee youngestEmp(List<Employee> employeeList) {
+        if(employeeList == null) return null;
         Employee youngestE = employeeList.get(0);
 
         for (int i = 0; i < employeeList.size(); i++) {

@@ -13,6 +13,14 @@ public class Employee {
         return name;
     }
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+
     public int getAge() {
         return age;
     }
