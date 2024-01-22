@@ -31,7 +31,11 @@ public class Box<T extends Fruit> {
 //        return Math.abs(this.weightCalculate() - anotherBox.weightCalculate()) < 0.001;
     }
 
-    public void  transfer(Box<? super T> anotherBox){
+    public void transfer(Box<? super T> anotherBox){
+        if (anotherBox.equals(this)){
+            System.out.println("Нельзя пересыпать в эту же коробку");
+            return;
+        }
         anotherBox.fruits.addAll(this.fruits);
         this.fruits.clear();
     }

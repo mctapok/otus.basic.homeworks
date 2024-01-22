@@ -21,6 +21,7 @@ public class Main {
         appleBox.weightCalculate();
         System.out.println(orangeBox + " | " + orangeBox1);
         orangeBox.transfer(orangeBox1);
+        orangeBox1.transfer(orangeBox1);
         System.out.println(orangeBox + " | " + orangeBox1);
         System.out.println(appleBox + " | " + fruitBox);
         appleBox.transfer(fruitBox);
