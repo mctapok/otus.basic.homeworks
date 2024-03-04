@@ -7,43 +7,59 @@ public class Main {
         MyLinkedList<String> myLinkedList = new MyLinkedList<>();
         MyQueue<String> myQueue = new MyQueue<>();
         MyStack<String> myStack = new MyStack<>();
-
-        Random random = new Random();
-        int[] array = new int[11];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = random.nextInt(100);
-        }
-        printArr(array);
-        recMergeSort(array, new int[array.length], 0, array.length - 1);
-        printArr(array);
-
+//
+//        Random random = new Random();
+//        int[] array = new int[11];
+//        for (int i = 0; i < array.length; i++) {
+//            array[i] = random.nextInt(100);
+//        }
+//        printArr(array);
+//        recMergeSort(array, new int[array.length], 0, array.length - 1);
+//        printArr(array);
+//
 //        myLinkedList.addFirst("1");
 //        myLinkedList.addFirst("2");
 //        myLinkedList.addFirst("3");
 //        myLinkedList.addFirst("4");
+//        myLinkedList.show();
+//        myLinkedList.remove(0);
+//        myLinkedList.show();
+//        myLinkedList.remove(1);
+//        myLinkedList.show();
+//        myLinkedList.remove(2);
+//        myLinkedList.show();
+//        myLinkedList.remove(1);
+//        myLinkedList.show();
+//        myLinkedList.remove(0);
+//        myLinkedList.show();
 //        myLinkedList.get(3);
 //        myLinkedList.show();
 //        myLinkedList.getLast();
 //        myLinkedList.getFirst();
-//        myLinkedList.add(3, "33");
+//        myLinkedList.add(1, "33");
 //        myLinkedList.show();
 //        myLinkedList.getSize();
 //        myLinkedList.remove(8);
 //        myLinkedList.show();
 //        myLinkedList.remove(0);
+//
+//        myLinkedList.remove(2);
 //        myLinkedList.show();
-//        myLinkedList.remove(0);
-//        myLinkedList.show();
-//        myLinkedList.getSize();
 
-//        myQueue.offer("1");
-//        myQueue.offer("2");
-//        myQueue.offer("3");
-//        myQueue.show();
-//        myQueue.poll();
-//        myQueue.show();
-//        myQueue.poll();
-//        myQueue.show();
+//        myLinkedList.getSize();
+//
+        myQueue.offer("1");
+        myQueue.offer("2");
+        myQueue.offer("3");
+        myQueue.show();
+        myQueue.poll();
+        myQueue.show();
+        myQueue.poll();
+        myQueue.show();
+        myQueue.poll();
+        myQueue.show();
+        myQueue.poll();
+
 //
 //        System.out.println();
 //

@@ -3,12 +3,12 @@ package ru.gavrilov.basic.homework.lesson17;
 public class MyQueue<E> {
     MyLinkedList<E> linkedList = new MyLinkedList<>();
 
-    public void offer(E data){
-        linkedList.addFirst(data);
+    public E offer(E data){
+        return linkedList.addFirst(data);
     }
 
-    public void poll(){
-        linkedList.remove(linkedList.getSize());
+    public E poll(){
+        return linkedList.remove(linkedList.getSize() - 1);
     }
     public void show(){
         linkedList.show();

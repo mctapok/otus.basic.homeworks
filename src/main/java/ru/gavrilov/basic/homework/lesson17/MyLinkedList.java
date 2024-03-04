@@ -1,21 +1,25 @@
 package ru.gavrilov.basic.homework.lesson17;
 
 public class MyLinkedList<E> {
+    int size = 0;
     Node<E> head;
     Node<E> tail;
 
-    public void addFirst(E data) {
+    public E addFirst(E data) {
         if (head == null) {
             Node<E> newNode = new Node<>(data);
             head = newNode;
             tail = newNode;
-            return;
+            size++;
+            return newNode.data;
         }
         Node<E> newNode = new Node<>(data);
         head.prevNode = newNode;
         newNode.nextNode = head;
         head = newNode;
         head.prevNode = null;
+        size++;
+        return newNode.data;
     }
 
     public void addLast(E data) {
@@ -23,6 +27,7 @@ public class MyLinkedList<E> {
             Node<E> newNode = new Node<>(data);
             head = newNode;
             tail = newNode;
+            size++;
             return;
         }
         Node<E> newNode = new Node<>(data);
@@ -30,10 +35,10 @@ public class MyLinkedList<E> {
         newNode.prevNode = tail;
         tail = newNode;
         tail.nextNode = null;
+        size++;
     }
 
     public E getLast() {
-        System.out.println(tail.data);
         return tail.data;
     }
 
@@ -51,12 +56,14 @@ public class MyLinkedList<E> {
         System.out.println();
     }
 
-    public void add(int position, E data) {
+    public E add(int position, E data) {
         Node<E> newNode = new Node<>(data);
         if (position == 0) {
             newNode.nextNode = head;
+            newNode.prevNode = head.prevNode;
             head = newNode;
-            return;
+            size++;
+            return newNode.data;
         }
         Node<E> currentNode = head;
         for (int i = 0; i < position - 1 && currentNode != null; i++) {
@@ -65,9 +72,10 @@ public class MyLinkedList<E> {
         if (currentNode == null) {
             throw new IndexOutOfBoundsException("Позиция больше размера списка");
         }
-
         newNode.nextNode = currentNode.nextNode;
         currentNode.nextNode = newNode;
+        size++;
+        return newNode.data;
     }
     public E get(int position){
         Node<E> currentNode = head;
@@ -83,28 +91,44 @@ public class MyLinkedList<E> {
 
     public E remove(int position) {
         Node<E> currentNode = head;
-        if (position == 0) {
-            head = head.nextNode;
-            return head.data;
+        if(getSize() == 0){
+            throw new IndexOutOfBoundsException("list empty");
         }
-        for (int i = 0; i < position - 1 && currentNode != null; i++) {
+        if(position < 0 || position > size){
+            throw new IndexOutOfBoundsException("out of index");
+        }
+        if(position == 0){
+            if(currentNode == tail){
+                head = null;
+                tail = null;
+                size--;
+                return currentNode.data;
+            }
+            currentNode.nextNode.prevNode = null;
+            head = currentNode.nextNode;
+            size--;
+            return currentNode.data;
+        }
+        for (int i = 0; i < position && currentNode != null; i++) {
             currentNode = currentNode.nextNode;
         }
-        if (currentNode == null) {
-            throw new IndexOutOfBoundsException("Позиция больше размера списка");
+        if (currentNode == null){
+            throw new IndexOutOfBoundsException("out of bounds");
         }
-        currentNode.nextNode = currentNode.nextNode.nextNode;
+        if(currentNode == tail){
+            currentNode.prevNode.nextNode = null;
+            tail = currentNode.prevNode;
+            size--;
+            return currentNode.data;
+        }
+        currentNode.prevNode.nextNode = currentNode.nextNode;
+        currentNode.nextNode.prevNode = currentNode.prevNode;
+        size--;
         return currentNode.data;
     }
 
     public int getSize() {
-        int length = 0;
-        Node<E> currentNode = head;
-        while (currentNode.nextNode != null) {
-            currentNode = currentNode.nextNode;
-            length++;
-        }
-        return length;
+        return size;
     }
 
     public boolean isEmpty() {
